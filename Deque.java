@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package deque;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -19,23 +19,18 @@ public class Deque<Item> implements Iterable<Item> {
    private int n;
    
    public Deque() {
-   
        first = null;
        last = null;
        n = 0;
-       
    }                           // construct an empty deque
    
    private class Node {
-   
-       Item item;
-       Node next;
-       Node pre;
-   
+       private Item item;
+       private Node next;
+       private Node pre;
    }
            
    public boolean isEmpty() {
-   
        return first == null;
    }                // is the deque empty?
    public int size() {
@@ -48,15 +43,13 @@ public class Deque<Item> implements Iterable<Item> {
        Node oldfirst = first;
        first = new Node();
        first.item = item;
-       
-       if (isEmpty())
+       if (oldfirst == null) {
            last = first;
-       else {
-           first.next = oldfirst;
-           oldfirst.pre = first;
        }
-       
-           
+       else {
+            first.next = oldfirst;
+            oldfirst.pre = first;
+       }
    }         // add the item to the front
    public void addLast(Item item) {
    
@@ -130,7 +123,7 @@ public class Deque<Item> implements Iterable<Item> {
                throw new NoSuchElementException("No item can be poped out");
            }
            Item item = current.item;
-           current =current.next;
+           current = current.next;
            
            return item;
        }

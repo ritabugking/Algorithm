@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package randomizedqueue;
 
 import edu.princeton.cs.algs4.StdRandom;
 import java.util.Iterator;
@@ -27,8 +27,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    }                // construct an empty randomized queue
     private class Node {
         
-        Item item;
-        Node next;
+        private Item item;
+        private Node next;
 
     }
    public boolean isEmpty() {
@@ -59,7 +59,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
        Item item;
        if (size == 1) {
            item = first.item;
-           first = last = null;
+           first = null;
+           last = null;
            size--;
            return item;
        }
@@ -73,7 +74,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
            return item;
        }
        
-       for (int i = 0; i <random-2; i++) {
+       for (int i = 0; i < random-2; i++) {
        
            current = current.next;
            
@@ -122,7 +123,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                throw new NoSuchElementException("No item can be poped out");
            }
            Item item = current.item;
-           current =current.next;
+           current = current.next;
            
            return item;
        }
@@ -132,5 +133,5 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
        }
        
    }        // return an independent iterator over items in random order
-   public static void main(String[] args) {}  // unit testing
+   public static void main(String[] args) { }  // unit testing
 }
